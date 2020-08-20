@@ -54,7 +54,6 @@ function App() {
       e.target.files[0].type === "image/svg" ||
       e.target.files[0].type === "image/webp";
     if (imageValidator) {
-      console.log("test");
       setFiles(e.target.files[0]);
     } else {
       return alert("Image Only");
@@ -64,7 +63,6 @@ function App() {
   const uploadImage = (e) => {
     e.preventDefault();
     const fd = new FormData();
-    console.log(file);
     fd.append("documents", file);
     fd.append("album", albums);
     axios
@@ -83,7 +81,6 @@ function App() {
         },
       })
       .then((i) => {
-        // console.log(i)
         setShow(false);
         setFiles(null);
       })
@@ -94,13 +91,13 @@ function App() {
     setLimits((prevState) => (prevState += prevState));
   };
   const clickedPhoto = (album, name, e) => {
-    console.log(e.target.checked, "VALUE");
+    // console.log(e.target.checked, "VALUE");
     const deleteItems = [...deleteFile];
     let existingAlbumIndex = deleteItems.findIndex(
       (item) => item.album === album
     );
     if (e.target.checked) {
-      console.log("TRUE");
+      // console.log("TRUE");
       if (existingAlbumIndex >= 0) {
         let photoDocument = deleteItems[existingAlbumIndex].documents;
         let photoDocsArr = photoDocument.split(", ");
